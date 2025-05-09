@@ -47,7 +47,7 @@ impl Default for DownloadConfig {
             retry_count: 3,
             retry_delay: Duration::from_secs(5),
             follow_redirects: true,
-            user_agent: format!("dove-downloader/{}", env!("CARGO_PKG_VERSION")),
+            user_agent: format!("dove/{}", env!("CARGO_PKG_VERSION")),
             verify_ssl: true,
             buffer_size: 8192, // 8KB
             progress_update_interval: Duration::from_millis(100),
