@@ -76,7 +76,7 @@ impl Dove {
     ///
     /// The progress_callback is called periodically with the current download progress.
     pub async fn download<P, F>(
-        &mut self,
+        &self,
         url: &str,
         destination_dir: P,
         filename: impl Into<Option<String>>,
