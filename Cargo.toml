@@ -1,0 +1,30 @@
+[package]
+name = "dove-core"
+version = "0.1.0"
+edition = "2021"
+description = "A multi-threaded file downloader with resume capability and progress tracking"
+authors = ["Dove Team"]
+license = "MIT"
+repository = "https://github.com/dove-team/dove-core"
+keywords = ["download", "http", "multi-threaded", "resume"]
+categories = ["network-programming", "asynchronous"]
+
+[dependencies]
+serde_json = { version = "1", default-features = false }
+thiserror = { version = "2", default-features = false, features = ["std"] }
+url = { version = "2", default-features = false }
+tokio = { version = "1", default-features = false, features = ["macros"] }
+reqwest = { version = "0", default-features = false, features = [
+    "stream",
+    "json",
+    "multipart",
+    "http2",
+    "native-tls",
+] }
+futures = { version = "0", default-features = false }
+serde = { version = "1", default-features = false, features = ["derive"] }
+rand = { version = "0", default-features = false, features = ["thread_rng"] }
+fs2 = { version = "0", default-features = false }
+bytes = { version = "1", default-features = false }
+tracing = { version = "0", default-features = false, features = ["log"] }
+blake3 = { version = "1", default-features = false }
