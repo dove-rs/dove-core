@@ -3,9 +3,9 @@ name = "dove-core"
 version = "0.1.0"
 edition = "2021"
 description = "A multi-threaded file downloader with resume capability and progress tracking"
-authors = ["Dove Team"]
+authors = ["thep0y"]
 license = "MIT"
-repository = "https://github.com/dove-team/dove-core"
+repository = "https://github.com/dove-rs/dove-core"
 keywords = ["download", "http", "multi-threaded", "resume"]
 categories = ["network-programming", "asynchronous"]
 
