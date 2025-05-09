@@ -41,7 +41,7 @@ pub struct Downloader {
     /// Current status of the download
     status: DownloadStatus,
     /// Progress tracker
-    progress_tracker: Option<ProgressTracker>,
+    progress_tracker: Option<Arc<ProgressTracker>>,
     /// Cancellation channel sender
     cancel_tx: Option<mpsc::Sender<()>>,
 }
@@ -135,8 +135,10 @@ impl Downloader {
         self.storage.check_disk_space(file_info.total_size).await?;
 
         // Initialize progress tracker
-        let progress_tracker =
-            ProgressTracker::new(file_info.total_size, self.config.progress_update_interval);
+        let progress_tracker = Arc::new(ProgressTracker::new(
+            file_info.total_size,
+            self.config.progress_update_interval,
+        ));
         self.progress_tracker = Some(progress_tracker.clone());
 
         // Create cancellation channel
@@ -162,7 +164,7 @@ impl Downloader {
             chunks,
             http_client,
             self.storage.clone(),
-            Arc::new(progress_tracker.clone()),
+            progress_tracker.clone(),
             cancel_rx,
             progress_callback,
         )
